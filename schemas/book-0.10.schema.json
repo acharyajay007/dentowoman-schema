@@ -1,0 +1,1859 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "enum": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.4",
+        "0.5",
+        "0.6",
+        "0.7",
+        "0.8",
+        "0.9",
+        "0.10"
+      ]
+    },
+    "branding": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "logoAssetId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,79}$"
+        },
+        "useDefaultLogo": {
+          "type": "boolean"
+        },
+        "accent": {
+          "type": "string",
+          "pattern": "^#[0-9a-f]{6}$"
+        }
+      },
+      "required": [
+        "name",
+        "useDefaultLogo"
+      ],
+      "additionalProperties": false
+    },
+    "pageFurniture": {
+      "type": "object",
+      "properties": {
+        "header": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "left": {
+              "type": "string",
+              "maxLength": 150
+            },
+            "center": {
+              "type": "string",
+              "maxLength": 150
+            },
+            "right": {
+              "type": "string",
+              "maxLength": 150
+            },
+            "logo": {
+              "type": "string",
+              "enum": [
+                "none",
+                "left",
+                "center",
+                "right"
+              ]
+            }
+          },
+          "required": [
+            "enabled",
+            "left",
+            "center",
+            "right",
+            "logo"
+          ],
+          "additionalProperties": false
+        },
+        "footer": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "left": {
+              "type": "string",
+              "maxLength": 150
+            },
+            "center": {
+              "type": "string",
+              "maxLength": 150
+            },
+            "right": {
+              "type": "string",
+              "maxLength": 150
+            },
+            "logo": {
+              "type": "string",
+              "enum": [
+                "none",
+                "left",
+                "center",
+                "right"
+              ]
+            }
+          },
+          "required": [
+            "enabled",
+            "left",
+            "center",
+            "right",
+            "logo"
+          ],
+          "additionalProperties": false
+        },
+        "pageNumbers": {
+          "type": "string",
+          "enum": [
+            "none",
+            "left",
+            "center",
+            "right"
+          ]
+        },
+        "numberStyle": {
+          "type": "string",
+          "enum": [
+            "number",
+            "page-of-total"
+          ]
+        },
+        "fontSize": {
+          "type": "number",
+          "minimum": 6,
+          "maximum": 12
+        }
+      },
+      "required": [
+        "header",
+        "footer",
+        "pageNumbers",
+        "numberStyle",
+        "fontSize"
+      ],
+      "additionalProperties": false
+    },
+    "design": {
+      "default": {
+        "theme": "signature",
+        "headingFont": "merriweather",
+        "bodyFont": "patrick"
+      },
+      "type": "object",
+      "properties": {
+        "theme": {
+          "type": "string",
+          "enum": [
+            "signature",
+            "ivory",
+            "mono"
+          ]
+        },
+        "headingFont": {
+          "type": "string",
+          "enum": [
+            "playfair",
+            "merriweather",
+            "lora",
+            "dmserif"
+          ]
+        },
+        "bodyFont": {
+          "type": "string",
+          "enum": [
+            "patrick",
+            "caveat",
+            "kalam",
+            "comic",
+            "sans"
+          ]
+        }
+      },
+      "required": [
+        "theme",
+        "headingFont",
+        "bodyFont"
+      ],
+      "additionalProperties": false
+    },
+    "cover": {
+      "default": {
+        "mode": "designed",
+        "kicker": "Revision Notes",
+        "tagline": "Learn. Recall. Review.",
+        "highlights": [
+          "Concise theory",
+          "High-yield tables",
+          "Illustrated concepts",
+          "Focused revision"
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "mode": {
+          "default": "designed",
+          "type": "string",
+          "enum": [
+            "designed",
+            "image"
+          ]
+        },
+        "kicker": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "tagline": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "highlights": {
+          "maxItems": 4,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "imageAssetId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,79}$"
+        }
+      },
+      "required": [
+        "mode",
+        "kicker",
+        "tagline",
+        "highlights"
+      ],
+      "additionalProperties": false
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 50000
+        },
+        "subtitle": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 50000
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 50000
+        },
+        "author": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 50000
+        },
+        "edition": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 50000
+        },
+        "introduction": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 50000,
+          "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+        }
+      },
+      "required": [
+        "title",
+        "subject",
+        "author",
+        "edition"
+      ],
+      "additionalProperties": false
+    },
+    "assets": {
+      "default": [],
+      "maxItems": 1000,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,79}$"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50000
+          },
+          "rights": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50000
+          }
+        },
+        "required": [
+          "id",
+          "path",
+          "rights"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "chapters": {
+      "minItems": 1,
+      "maxItems": 100,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,79}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50000
+          },
+          "introduction": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50000,
+            "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+          },
+          "topics": {
+            "minItems": 1,
+            "maxItems": 300,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,79}$"
+                },
+                "title": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 50000
+                },
+                "layout": {
+                  "type": "string",
+                  "enum": [
+                    "auto",
+                    "concept",
+                    "classification",
+                    "comparison",
+                    "flow",
+                    "diagram",
+                    "multi-diagram"
+                  ]
+                },
+                "blocks": {
+                  "minItems": 1,
+                  "maxItems": 1000,
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "paragraph"
+                          },
+                          "text": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000,
+                            "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+                          },
+                          "format": {
+                            "description": "Omitted/plain preserves literal text. Rich enables **bold**, *italic*, ==highlight==, =={#RRGGBB}colored highlight==, ^{superscript}, _{subscript}. No HTML or external links/images.",
+                            "type": "string",
+                            "enum": [
+                              "plain",
+                              "rich"
+                            ]
+                          },
+                          "grid": {
+                            "description": "Optional 12-column row placement. Omitted means full width. Adjacent partial-width blocks share a row until 12 units are used; newRow starts a fresh row. stack appends content inside the preceding column with matching span and no newRow. Partial-width rows must fit on one printable page.",
+                            "type": "object",
+                            "properties": {
+                              "span": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 12
+                              },
+                              "newRow": {
+                                "type": "boolean"
+                              },
+                              "stack": {
+                                "description": "Append this block below the preceding block in the same column. Requires the same span and no newRow.",
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "span"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "font": {
+                            "description": "Optional font override for this component and its generated answers. Omitted inherits book defaults.",
+                            "type": "string",
+                            "enum": [
+                              "patrick",
+                              "caveat",
+                              "kalam",
+                              "comic",
+                              "sans",
+                              "playfair",
+                              "merriweather",
+                              "lora",
+                              "dmserif"
+                            ]
+                          },
+                          "label": {
+                            "description": "Legacy editor-only metadata. Not used as a card name or printed.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "text"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "heading"
+                          },
+                          "text": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000
+                          },
+                          "format": {
+                            "description": "Omitted/plain preserves literal text. Rich enables **bold**, *italic*, ==highlight==, =={#RRGGBB}colored highlight==, ^{superscript}, _{subscript}. No HTML or external links/images.",
+                            "type": "string",
+                            "enum": [
+                              "plain",
+                              "rich"
+                            ]
+                          },
+                          "level": {
+                            "default": 2,
+                            "anyOf": [
+                              {
+                                "type": "number",
+                                "const": 2
+                              },
+                              {
+                                "type": "number",
+                                "const": 3
+                              }
+                            ]
+                          },
+                          "grid": {
+                            "description": "Optional 12-column row placement. Omitted means full width. Adjacent partial-width blocks share a row until 12 units are used; newRow starts a fresh row. stack appends content inside the preceding column with matching span and no newRow. Partial-width rows must fit on one printable page.",
+                            "type": "object",
+                            "properties": {
+                              "span": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 12
+                              },
+                              "newRow": {
+                                "type": "boolean"
+                              },
+                              "stack": {
+                                "description": "Append this block below the preceding block in the same column. Requires the same span and no newRow.",
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "span"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "font": {
+                            "description": "Optional font override for this component and its generated answers. Omitted inherits book defaults.",
+                            "type": "string",
+                            "enum": [
+                              "patrick",
+                              "caveat",
+                              "kalam",
+                              "comic",
+                              "sans",
+                              "playfair",
+                              "merriweather",
+                              "lora",
+                              "dmserif"
+                            ]
+                          },
+                          "label": {
+                            "description": "Legacy editor-only metadata. Not used as a card name or printed.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "text",
+                          "level"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "list"
+                          },
+                          "format": {
+                            "description": "Omitted/plain preserves literal text. Rich enables **bold**, *italic*, ==highlight==, =={#RRGGBB}colored highlight==, ^{superscript}, _{subscript}. No HTML or external links/images.",
+                            "type": "string",
+                            "enum": [
+                              "plain",
+                              "rich"
+                            ]
+                          },
+                          "ordered": {
+                            "default": false,
+                            "type": "boolean"
+                          },
+                          "items": {
+                            "minItems": 1,
+                            "maxItems": 200,
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 50000,
+                              "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+                            }
+                          },
+                          "grid": {
+                            "description": "Optional 12-column row placement. Omitted means full width. Adjacent partial-width blocks share a row until 12 units are used; newRow starts a fresh row. stack appends content inside the preceding column with matching span and no newRow. Partial-width rows must fit on one printable page.",
+                            "type": "object",
+                            "properties": {
+                              "span": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 12
+                              },
+                              "newRow": {
+                                "type": "boolean"
+                              },
+                              "stack": {
+                                "description": "Append this block below the preceding block in the same column. Requires the same span and no newRow.",
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "span"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "font": {
+                            "description": "Optional font override for this component and its generated answers. Omitted inherits book defaults.",
+                            "type": "string",
+                            "enum": [
+                              "patrick",
+                              "caveat",
+                              "kalam",
+                              "comic",
+                              "sans",
+                              "playfair",
+                              "merriweather",
+                              "lora",
+                              "dmserif"
+                            ]
+                          },
+                          "label": {
+                            "description": "Legacy editor-only metadata. Not used as a card name or printed.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "ordered",
+                          "items"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "table"
+                          },
+                          "caption": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000
+                          },
+                          "format": {
+                            "description": "Omitted/plain preserves literal text. Rich enables **bold**, *italic*, ==highlight==, =={#RRGGBB}colored highlight==, ^{superscript}, _{subscript}. No HTML or external links/images.",
+                            "type": "string",
+                            "enum": [
+                              "plain",
+                              "rich"
+                            ]
+                          },
+                          "headers": {
+                            "minItems": 2,
+                            "maxItems": 6,
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 50000
+                            }
+                          },
+                          "rows": {
+                            "minItems": 1,
+                            "maxItems": 300,
+                            "type": "array",
+                            "items": {
+                              "minItems": 2,
+                              "maxItems": 6,
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 50000,
+                                "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+                              }
+                            }
+                          },
+                          "autoFit": {
+                            "type": "boolean"
+                          },
+                          "columnWidths": {
+                            "minItems": 2,
+                            "maxItems": 6,
+                            "type": "array",
+                            "items": {
+                              "type": "number",
+                              "minimum": 0.01,
+                              "maximum": 100
+                            }
+                          },
+                          "alignments": {
+                            "minItems": 2,
+                            "maxItems": 6,
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "left",
+                                "center",
+                                "right"
+                              ]
+                            }
+                          },
+                          "style": {
+                            "type": "string",
+                            "enum": [
+                              "default",
+                              "striped",
+                              "minimal"
+                            ]
+                          },
+                          "grid": {
+                            "description": "Optional 12-column row placement. Omitted means full width. Adjacent partial-width blocks share a row until 12 units are used; newRow starts a fresh row. stack appends content inside the preceding column with matching span and no newRow. Partial-width rows must fit on one printable page.",
+                            "type": "object",
+                            "properties": {
+                              "span": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 12
+                              },
+                              "newRow": {
+                                "type": "boolean"
+                              },
+                              "stack": {
+                                "description": "Append this block below the preceding block in the same column. Requires the same span and no newRow.",
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "span"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "font": {
+                            "description": "Optional font override for this component and its generated answers. Omitted inherits book defaults.",
+                            "type": "string",
+                            "enum": [
+                              "patrick",
+                              "caveat",
+                              "kalam",
+                              "comic",
+                              "sans",
+                              "playfair",
+                              "merriweather",
+                              "lora",
+                              "dmserif"
+                            ]
+                          },
+                          "label": {
+                            "description": "Legacy editor-only metadata. Not used as a card name or printed.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "headers",
+                          "rows"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "callout"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "note",
+                              "info",
+                              "success",
+                              "important",
+                              "warning",
+                              "error",
+                              "exam",
+                              "clinical",
+                              "memory"
+                            ]
+                          },
+                          "title": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000
+                          },
+                          "text": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000,
+                            "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+                          },
+                          "format": {
+                            "description": "Omitted/plain preserves literal text. Rich enables **bold**, *italic*, ==highlight==, =={#RRGGBB}colored highlight==, ^{superscript}, _{subscript}. No HTML or external links/images.",
+                            "type": "string",
+                            "enum": [
+                              "plain",
+                              "rich"
+                            ]
+                          },
+                          "grid": {
+                            "description": "Optional 12-column row placement. Omitted means full width. Adjacent partial-width blocks share a row until 12 units are used; newRow starts a fresh row. stack appends content inside the preceding column with matching span and no newRow. Partial-width rows must fit on one printable page.",
+                            "type": "object",
+                            "properties": {
+                              "span": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 12
+                              },
+                              "newRow": {
+                                "type": "boolean"
+                              },
+                              "stack": {
+                                "description": "Append this block below the preceding block in the same column. Requires the same span and no newRow.",
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "span"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "font": {
+                            "description": "Optional font override for this component and its generated answers. Omitted inherits book defaults.",
+                            "type": "string",
+                            "enum": [
+                              "patrick",
+                              "caveat",
+                              "kalam",
+                              "comic",
+                              "sans",
+                              "playfair",
+                              "merriweather",
+                              "lora",
+                              "dmserif"
+                            ]
+                          },
+                          "label": {
+                            "description": "Legacy editor-only metadata. Not used as a card name or printed.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "kind",
+                          "title",
+                          "text"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "diagram"
+                          },
+                          "assetId": {
+                            "type": "string",
+                            "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,79}$"
+                          },
+                          "caption": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000
+                          },
+                          "alt": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000
+                          },
+                          "size": {
+                            "default": "medium",
+                            "type": "string",
+                            "enum": [
+                              "small",
+                              "medium",
+                              "large"
+                            ]
+                          },
+                          "format": {
+                            "description": "Omitted/plain preserves literal text. Rich enables **bold**, *italic*, ==highlight==, =={#RRGGBB}colored highlight==, ^{superscript}, _{subscript}. No HTML or external links/images.",
+                            "type": "string",
+                            "enum": [
+                              "plain",
+                              "rich"
+                            ]
+                          },
+                          "grid": {
+                            "description": "Optional 12-column row placement. Omitted means full width. Adjacent partial-width blocks share a row until 12 units are used; newRow starts a fresh row. stack appends content inside the preceding column with matching span and no newRow. Partial-width rows must fit on one printable page.",
+                            "type": "object",
+                            "properties": {
+                              "span": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 12
+                              },
+                              "newRow": {
+                                "type": "boolean"
+                              },
+                              "stack": {
+                                "description": "Append this block below the preceding block in the same column. Requires the same span and no newRow.",
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "span"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "font": {
+                            "description": "Optional font override for this component and its generated answers. Omitted inherits book defaults.",
+                            "type": "string",
+                            "enum": [
+                              "patrick",
+                              "caveat",
+                              "kalam",
+                              "comic",
+                              "sans",
+                              "playfair",
+                              "merriweather",
+                              "lora",
+                              "dmserif"
+                            ]
+                          },
+                          "label": {
+                            "description": "Legacy editor-only metadata. Not used as a card name or printed.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "assetId",
+                          "caption",
+                          "alt",
+                          "size"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "classification"
+                          },
+                          "title": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000
+                          },
+                          "groups": {
+                            "minItems": 1,
+                            "maxItems": 30,
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "title": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 50000
+                                },
+                                "items": {
+                                  "minItems": 1,
+                                  "maxItems": 40,
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 50000,
+                                    "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+                                  }
+                                }
+                              },
+                              "required": [
+                                "title",
+                                "items"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "format": {
+                            "description": "Omitted/plain preserves literal text. Rich enables **bold**, *italic*, ==highlight==, =={#RRGGBB}colored highlight==, ^{superscript}, _{subscript}. No HTML or external links/images.",
+                            "type": "string",
+                            "enum": [
+                              "plain",
+                              "rich"
+                            ]
+                          },
+                          "grid": {
+                            "description": "Optional 12-column row placement. Omitted means full width. Adjacent partial-width blocks share a row until 12 units are used; newRow starts a fresh row. stack appends content inside the preceding column with matching span and no newRow. Partial-width rows must fit on one printable page.",
+                            "type": "object",
+                            "properties": {
+                              "span": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 12
+                              },
+                              "newRow": {
+                                "type": "boolean"
+                              },
+                              "stack": {
+                                "description": "Append this block below the preceding block in the same column. Requires the same span and no newRow.",
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "span"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "font": {
+                            "description": "Optional font override for this component and its generated answers. Omitted inherits book defaults.",
+                            "type": "string",
+                            "enum": [
+                              "patrick",
+                              "caveat",
+                              "kalam",
+                              "comic",
+                              "sans",
+                              "playfair",
+                              "merriweather",
+                              "lora",
+                              "dmserif"
+                            ]
+                          },
+                          "label": {
+                            "description": "Legacy editor-only metadata. Not used as a card name or printed.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "title",
+                          "groups"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "flow"
+                          },
+                          "title": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000
+                          },
+                          "steps": {
+                            "minItems": 2,
+                            "maxItems": 30,
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "title": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 50000
+                                },
+                                "text": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 50000,
+                                  "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+                                }
+                              },
+                              "required": [
+                                "title",
+                                "text"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "format": {
+                            "description": "Omitted/plain preserves literal text. Rich enables **bold**, *italic*, ==highlight==, =={#RRGGBB}colored highlight==, ^{superscript}, _{subscript}. No HTML or external links/images.",
+                            "type": "string",
+                            "enum": [
+                              "plain",
+                              "rich"
+                            ]
+                          },
+                          "grid": {
+                            "description": "Optional 12-column row placement. Omitted means full width. Adjacent partial-width blocks share a row until 12 units are used; newRow starts a fresh row. stack appends content inside the preceding column with matching span and no newRow. Partial-width rows must fit on one printable page.",
+                            "type": "object",
+                            "properties": {
+                              "span": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 12
+                              },
+                              "newRow": {
+                                "type": "boolean"
+                              },
+                              "stack": {
+                                "description": "Append this block below the preceding block in the same column. Requires the same span and no newRow.",
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "span"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "font": {
+                            "description": "Optional font override for this component and its generated answers. Omitted inherits book defaults.",
+                            "type": "string",
+                            "enum": [
+                              "patrick",
+                              "caveat",
+                              "kalam",
+                              "comic",
+                              "sans",
+                              "playfair",
+                              "merriweather",
+                              "lora",
+                              "dmserif"
+                            ]
+                          },
+                          "label": {
+                            "description": "Legacy editor-only metadata. Not used as a card name or printed.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "title",
+                          "steps"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "image-grid"
+                          },
+                          "title": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000
+                          },
+                          "format": {
+                            "description": "Omitted/plain preserves literal text. Rich enables **bold**, *italic*, ==highlight==, =={#RRGGBB}colored highlight==, ^{superscript}, _{subscript}. No HTML or external links/images.",
+                            "type": "string",
+                            "enum": [
+                              "plain",
+                              "rich"
+                            ]
+                          },
+                          "sizing": {
+                            "type": "string",
+                            "enum": [
+                              "fixed",
+                              "flexible"
+                            ]
+                          },
+                          "columns": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 4
+                          },
+                          "images": {
+                            "minItems": 1,
+                            "maxItems": 4,
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "assetId": {
+                                  "type": "string",
+                                  "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,79}$"
+                                },
+                                "caption": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 50000
+                                },
+                                "alt": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 50000
+                                }
+                              },
+                              "required": [
+                                "assetId",
+                                "caption",
+                                "alt"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "grid": {
+                            "description": "Optional 12-column row placement. Omitted means full width. Adjacent partial-width blocks share a row until 12 units are used; newRow starts a fresh row. stack appends content inside the preceding column with matching span and no newRow. Partial-width rows must fit on one printable page.",
+                            "type": "object",
+                            "properties": {
+                              "span": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 12
+                              },
+                              "newRow": {
+                                "type": "boolean"
+                              },
+                              "stack": {
+                                "description": "Append this block below the preceding block in the same column. Requires the same span and no newRow.",
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "span"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "font": {
+                            "description": "Optional font override for this component and its generated answers. Omitted inherits book defaults.",
+                            "type": "string",
+                            "enum": [
+                              "patrick",
+                              "caveat",
+                              "kalam",
+                              "comic",
+                              "sans",
+                              "playfair",
+                              "merriweather",
+                              "lora",
+                              "dmserif"
+                            ]
+                          },
+                          "label": {
+                            "description": "Legacy editor-only metadata. Not used as a card name or printed.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "title",
+                          "images"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "formula"
+                          },
+                          "title": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000
+                          },
+                          "expression": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000,
+                            "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+                          },
+                          "explanation": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000,
+                            "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+                          },
+                          "format": {
+                            "description": "Omitted/plain preserves literal text. Rich enables **bold**, *italic*, ==highlight==, =={#RRGGBB}colored highlight==, ^{superscript}, _{subscript}. No HTML or external links/images.",
+                            "type": "string",
+                            "enum": [
+                              "plain",
+                              "rich"
+                            ]
+                          },
+                          "grid": {
+                            "description": "Optional 12-column row placement. Omitted means full width. Adjacent partial-width blocks share a row until 12 units are used; newRow starts a fresh row. stack appends content inside the preceding column with matching span and no newRow. Partial-width rows must fit on one printable page.",
+                            "type": "object",
+                            "properties": {
+                              "span": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 12
+                              },
+                              "newRow": {
+                                "type": "boolean"
+                              },
+                              "stack": {
+                                "description": "Append this block below the preceding block in the same column. Requires the same span and no newRow.",
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "span"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "font": {
+                            "description": "Optional font override for this component and its generated answers. Omitted inherits book defaults.",
+                            "type": "string",
+                            "enum": [
+                              "patrick",
+                              "caveat",
+                              "kalam",
+                              "comic",
+                              "sans",
+                              "playfair",
+                              "merriweather",
+                              "lora",
+                              "dmserif"
+                            ]
+                          },
+                          "label": {
+                            "description": "Legacy editor-only metadata. Not used as a card name or printed.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "title",
+                          "expression"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "recall"
+                          },
+                          "title": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000
+                          },
+                          "format": {
+                            "description": "Omitted/plain preserves literal text. Rich enables **bold**, *italic*, ==highlight==, =={#RRGGBB}colored highlight==, ^{superscript}, _{subscript}. No HTML or external links/images.",
+                            "type": "string",
+                            "enum": [
+                              "plain",
+                              "rich"
+                            ]
+                          },
+                          "prompts": {
+                            "minItems": 1,
+                            "maxItems": 100,
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "question": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 50000,
+                                  "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+                                },
+                                "answer": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 50000,
+                                  "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+                                }
+                              },
+                              "required": [
+                                "question",
+                                "answer"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "grid": {
+                            "description": "Optional 12-column row placement. Omitted means full width. Adjacent partial-width blocks share a row until 12 units are used; newRow starts a fresh row. stack appends content inside the preceding column with matching span and no newRow. Partial-width rows must fit on one printable page.",
+                            "type": "object",
+                            "properties": {
+                              "span": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 12
+                              },
+                              "newRow": {
+                                "type": "boolean"
+                              },
+                              "stack": {
+                                "description": "Append this block below the preceding block in the same column. Requires the same span and no newRow.",
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "span"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "font": {
+                            "description": "Optional font override for this component and its generated answers. Omitted inherits book defaults.",
+                            "type": "string",
+                            "enum": [
+                              "patrick",
+                              "caveat",
+                              "kalam",
+                              "comic",
+                              "sans",
+                              "playfair",
+                              "merriweather",
+                              "lora",
+                              "dmserif"
+                            ]
+                          },
+                          "label": {
+                            "description": "Legacy editor-only metadata. Not used as a card name or printed.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "title",
+                          "prompts"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "quiz"
+                          },
+                          "title": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000
+                          },
+                          "format": {
+                            "description": "Omitted/plain preserves literal text. Rich enables **bold**, *italic*, ==highlight==, =={#RRGGBB}colored highlight==, ^{superscript}, _{subscript}. No HTML or external links/images.",
+                            "type": "string",
+                            "enum": [
+                              "plain",
+                              "rich"
+                            ]
+                          },
+                          "questions": {
+                            "minItems": 1,
+                            "maxItems": 100,
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "prompt": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 50000,
+                                  "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+                                },
+                                "options": {
+                                  "minItems": 2,
+                                  "maxItems": 6,
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 50000,
+                                    "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+                                  }
+                                },
+                                "answer": {
+                                  "type": "integer",
+                                  "minimum": 0,
+                                  "maximum": 5
+                                },
+                                "explanation": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 50000,
+                                  "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+                                },
+                                "source": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 50000
+                                }
+                              },
+                              "required": [
+                                "prompt",
+                                "options",
+                                "answer",
+                                "explanation"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "grid": {
+                            "description": "Optional 12-column row placement. Omitted means full width. Adjacent partial-width blocks share a row until 12 units are used; newRow starts a fresh row. stack appends content inside the preceding column with matching span and no newRow. Partial-width rows must fit on one printable page.",
+                            "type": "object",
+                            "properties": {
+                              "span": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 12
+                              },
+                              "newRow": {
+                                "type": "boolean"
+                              },
+                              "stack": {
+                                "description": "Append this block below the preceding block in the same column. Requires the same span and no newRow.",
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "span"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "font": {
+                            "description": "Optional font override for this component and its generated answers. Omitted inherits book defaults.",
+                            "type": "string",
+                            "enum": [
+                              "patrick",
+                              "caveat",
+                              "kalam",
+                              "comic",
+                              "sans",
+                              "playfair",
+                              "merriweather",
+                              "lora",
+                              "dmserif"
+                            ]
+                          },
+                          "label": {
+                            "description": "Legacy editor-only metadata. Not used as a card name or printed.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "title",
+                          "questions"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "revision-map"
+                          },
+                          "title": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000
+                          },
+                          "groups": {
+                            "minItems": 1,
+                            "maxItems": 30,
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "title": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 50000
+                                },
+                                "items": {
+                                  "minItems": 1,
+                                  "maxItems": 40,
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 50000,
+                                    "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+                                  }
+                                }
+                              },
+                              "required": [
+                                "title",
+                                "items"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "format": {
+                            "description": "Omitted/plain preserves literal text. Rich enables **bold**, *italic*, ==highlight==, =={#RRGGBB}colored highlight==, ^{superscript}, _{subscript}. No HTML or external links/images.",
+                            "type": "string",
+                            "enum": [
+                              "plain",
+                              "rich"
+                            ]
+                          },
+                          "grid": {
+                            "description": "Optional 12-column row placement. Omitted means full width. Adjacent partial-width blocks share a row until 12 units are used; newRow starts a fresh row. stack appends content inside the preceding column with matching span and no newRow. Partial-width rows must fit on one printable page.",
+                            "type": "object",
+                            "properties": {
+                              "span": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 12
+                              },
+                              "newRow": {
+                                "type": "boolean"
+                              },
+                              "stack": {
+                                "description": "Append this block below the preceding block in the same column. Requires the same span and no newRow.",
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "span"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "font": {
+                            "description": "Optional font override for this component and its generated answers. Omitted inherits book defaults.",
+                            "type": "string",
+                            "enum": [
+                              "patrick",
+                              "caveat",
+                              "kalam",
+                              "comic",
+                              "sans",
+                              "playfair",
+                              "merriweather",
+                              "lora",
+                              "dmserif"
+                            ]
+                          },
+                          "label": {
+                            "description": "Legacy editor-only metadata. Not used as a card name or printed.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "title",
+                          "groups"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "summary"
+                          },
+                          "title": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000
+                          },
+                          "items": {
+                            "minItems": 1,
+                            "maxItems": 100,
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 50000,
+                              "description": "Text without HTML. Theory text supports ^{superscript}/_{subscript}; rich block formatting is controlled separately by format."
+                            }
+                          },
+                          "format": {
+                            "description": "Omitted/plain preserves literal text. Rich enables **bold**, *italic*, ==highlight==, =={#RRGGBB}colored highlight==, ^{superscript}, _{subscript}. No HTML or external links/images.",
+                            "type": "string",
+                            "enum": [
+                              "plain",
+                              "rich"
+                            ]
+                          },
+                          "grid": {
+                            "description": "Optional 12-column row placement. Omitted means full width. Adjacent partial-width blocks share a row until 12 units are used; newRow starts a fresh row. stack appends content inside the preceding column with matching span and no newRow. Partial-width rows must fit on one printable page.",
+                            "type": "object",
+                            "properties": {
+                              "span": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 12
+                              },
+                              "newRow": {
+                                "type": "boolean"
+                              },
+                              "stack": {
+                                "description": "Append this block below the preceding block in the same column. Requires the same span and no newRow.",
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "span"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "font": {
+                            "description": "Optional font override for this component and its generated answers. Omitted inherits book defaults.",
+                            "type": "string",
+                            "enum": [
+                              "patrick",
+                              "caveat",
+                              "kalam",
+                              "comic",
+                              "sans",
+                              "playfair",
+                              "merriweather",
+                              "lora",
+                              "dmserif"
+                            ]
+                          },
+                          "label": {
+                            "description": "Legacy editor-only metadata. Not used as a card name or printed.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "title",
+                          "items"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "tracker"
+                          },
+                          "title": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 50000
+                          },
+                          "items": {
+                            "minItems": 1,
+                            "maxItems": 100,
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 50000
+                            }
+                          },
+                          "columns": {
+                            "default": [
+                              "Read",
+                              "Recall",
+                              "Revise"
+                            ],
+                            "minItems": 1,
+                            "maxItems": 6,
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 50000
+                            }
+                          },
+                          "format": {
+                            "description": "Omitted/plain preserves literal text. Rich enables **bold**, *italic*, ==highlight==, =={#RRGGBB}colored highlight==, ^{superscript}, _{subscript}. No HTML or external links/images.",
+                            "type": "string",
+                            "enum": [
+                              "plain",
+                              "rich"
+                            ]
+                          },
+                          "grid": {
+                            "description": "Optional 12-column row placement. Omitted means full width. Adjacent partial-width blocks share a row until 12 units are used; newRow starts a fresh row. stack appends content inside the preceding column with matching span and no newRow. Partial-width rows must fit on one printable page.",
+                            "type": "object",
+                            "properties": {
+                              "span": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 12
+                              },
+                              "newRow": {
+                                "type": "boolean"
+                              },
+                              "stack": {
+                                "description": "Append this block below the preceding block in the same column. Requires the same span and no newRow.",
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "span"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "font": {
+                            "description": "Optional font override for this component and its generated answers. Omitted inherits book defaults.",
+                            "type": "string",
+                            "enum": [
+                              "patrick",
+                              "caveat",
+                              "kalam",
+                              "comic",
+                              "sans",
+                              "playfair",
+                              "merriweather",
+                              "lora",
+                              "dmserif"
+                            ]
+                          },
+                          "label": {
+                            "description": "Legacy editor-only metadata. Not used as a card name or printed.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "title",
+                          "items",
+                          "columns"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "blocks"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "topics"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "design",
+    "cover",
+    "metadata",
+    "assets",
+    "chapters"
+  ],
+  "additionalProperties": false,
+  "$id": "https://raw.githubusercontent.com/acharyajay007/dentowoman-schema/main/schemas/book-0.10.schema.json",
+  "title": "Dentowoman complete book",
+  "description": "Offline publishing input. Agents should emit schemaVersion 0.10. See the preparation contract for components, layouts, separate answers, asset, semantic validation and rich inline formatting rules. This public JSON Schema validates structure; local asset integrity, cross-references, rights review and print preflight remain required."
+}
