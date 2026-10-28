@@ -2,17 +2,19 @@
 
 Public, versioned JSON Schema for structured educational books prepared for Dentowoman Studio.
 
-## Current contract: 0.7
+## Current contract: 0.8
 
-- Schema: https://raw.githubusercontent.com/acharyajay007/dentowoman-schema/main/schemas/book-0.7.schema.json
+- Schema: https://raw.githubusercontent.com/acharyajay007/dentowoman-schema/main/schemas/book-0.8.schema.json
 - Standard: JSON Schema Draft 2020-12
 - Canonical `$id`: the schema URL above
 - Content: ordered chapters/topics, 15 content-component types, image references, design settings, and optional 12-column row placement.
+- Contract 0.8 adds optional per-component font overrides using the nine bundled font families. Omit `font` to inherit book typography; tables honor the book body font or their explicit override.
 - Contract 0.7 adds generic Note/Info/Success/Important/Warning/Error callouts and persistent table widths, alignment and styles. Legacy callout kinds and earlier supported book versions remain importable.
 - Contract 0.6 introduced multiple components per column using `grid.stack`; legacy optional component labels remain accepted.
 
 ## Previous contracts
 
+- Contract 0.7: https://raw.githubusercontent.com/acharyajay007/dentowoman-schema/main/schemas/book-0.7.schema.json
 - Contract 0.6: https://raw.githubusercontent.com/acharyajay007/dentowoman-schema/main/schemas/book-0.6.schema.json
 - Contract 0.5: https://raw.githubusercontent.com/acharyajay007/dentowoman-schema/main/schemas/book-0.5.schema.json
 
